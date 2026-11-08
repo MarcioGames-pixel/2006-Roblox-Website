@@ -105,7 +105,7 @@ body {
                 <input name="_ctl0:cphRoblox:rbxLoginView:lvLoginView:lSignIn:Password" type="password" id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_Password" tabindex="2" class="Text">
               </div>
               <div class="AspNet-Login-SubmitPanel">
-                <a id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_Login" tabindex="4" class="Button" href="javascript:__doPostBack('_ctl0$cphRoblox$rbxLoginView$lvLoginView$lSignIn$Login','')">Log In</a>
+                <a id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_Login" tabindex="4" class="Button" href="Login/Default.aspx">Log In</a>
               </div>
               <div class="AspNet-Login-PasswordRecoveryPanel">
                 <a id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_hlPasswordRecovery" tabindex="5" href="Login/ResetPasswordRequest.aspx">Forgot your password?</a>

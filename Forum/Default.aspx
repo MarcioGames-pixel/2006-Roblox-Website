@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_check();
     $title = trim($_POST['title'] ?? '');
     $body = trim($_POST['body'] ?? '');
-    if (strlen($title) < 3 || mb_strlen($title) > 100 || strlen($body) < 3 || mb_strlen($body) > 5000) {
+    if (strlen($title) < 3 || strlen($title) > 100 || strlen($body) < 3 || strlen($body) > 5000) {
         $error = 'Enter a title (3-100 characters) and a message (3-5000 characters).';
     } else {
         $insert = $db->prepare('INSERT INTO forum_topics (user_id, title, body, created_at) VALUES (:user_id, :title, :body, NOW())');

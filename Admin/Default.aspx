@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $notice = 'That moderation action is not allowed.';
     }
 }
-$users = $db->query('SELECT id, name, banned, created_at FROM users ORDER BY id DESC LIMIT 100')->fetchAll(PDO::FETCH_ASSOC);
+$users = $db->query('SELECT id, name, admin, banned, created_at FROM users ORDER BY id DESC LIMIT 100')->fetchAll(PDO::FETCH_ASSOC);
 page_header('Administration');
 echo '<h2>ROBLOX Administration</h2><p>Manage community accounts. Administrator accounts are protected from these actions.</p>';
 if ($notice) echo '<div class="notice">' . h($notice) . '</div>';

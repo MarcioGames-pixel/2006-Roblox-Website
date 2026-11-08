@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_login();
     csrf_check();
     $body = trim($_POST['body'] ?? '');
-    if (strlen($body) < 2 || mb_strlen($body) > 3000) {
+    if (strlen($body) < 2 || strlen($body) > 3000) {
         $error = 'Your reply must be between 2 and 3000 characters.';
     } else {
         $reply = $db->prepare('INSERT INTO forum_replies (topic_id, user_id, body, created_at) VALUES (:topic_id, :user_id, :body, NOW())');

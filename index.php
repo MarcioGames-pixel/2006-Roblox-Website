@@ -1,5 +1,6 @@
 <?php
-include "cfg/includes.php";  
+include "cfg/includes.php";
+require_once "cfg/functions.php";  
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -92,20 +93,21 @@ body {
   
       <div id="LoginView">
         <h5>Member Log-In</h5>
+        <form id="homeLogin" method="post" action="Login/Default.aspx"><input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES); ?>"></form>
         <table id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn" cellspacing="0" cellpadding="0" border="0">
   <tbody><tr>
     <td>
             <div class="AspNet-Login">
               <div class="AspNet-Login-UserPanel">
                 <label for="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_UserName" id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_UserNameLabel" class="Label">Character Name</label>
-                <input name="_ctl0:cphRoblox:rbxLoginView:lvLoginView:lSignIn:UserName" type="text" id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_UserName" tabindex="1" class="Text">
+                <input name="usernamefield" form="homeLogin" type="text" id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_UserName" tabindex="1" class="Text">
               </div>
               <div class="AspNet-Login-PasswordPanel">
                 <label for="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_Password" id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_PasswordLabel" class="Label">Password</label>
-                <input name="_ctl0:cphRoblox:rbxLoginView:lvLoginView:lSignIn:Password" type="password" id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_Password" tabindex="2" class="Text">
+                <input name="passwordfield" form="homeLogin" type="password" id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_Password" tabindex="2" class="Text">
               </div>
               <div class="AspNet-Login-SubmitPanel">
-                <a id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_Login" tabindex="4" class="Button" href="Login/Default.aspx">Log In</a>
+                <button id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_Login" tabindex="4" class="Button" type="submit" form="homeLogin">Log In</button>
               </div>
               <div class="AspNet-Login-PasswordRecoveryPanel">
                 <a id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_hlPasswordRecovery" tabindex="5" href="Login/ResetPasswordRequest.aspx">Forgot your password?</a>

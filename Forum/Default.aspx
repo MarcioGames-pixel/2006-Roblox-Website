@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirect_to('/Forum/Post.aspx?id=' . $db->lastInsertId());
     }
 }
-$topics = $db->query('SELECT t.id, t.title, t.created_at, u.name, (SELECT COUNT(*) FROM forum_replies r WHERE r.topic_id = t.id) AS replies FROM forum_topics t JOIN users u ON u.id = t.user_id ORDER BY t.created_at DESC LIMIT 50')->fetchAll(PDO::FETCH_ASSOC);
+$topics = $db->query('SELECT t.id, t.title, t.created_at, u.id AS user_id, u.name, (SELECT COUNT(*) FROM forum_replies r WHERE r.topic_id = t.id) AS replies FROM forum_topics t JOIN users u ON u.id = t.user_id ORDER BY t.created_at DESC LIMIT 50')->fetchAll(PDO::FETCH_ASSOC);
 page_header('Forum');
 echo '<h2>ROBLOX Community Forum</h2><p>Talk about building, games, and the ROBLOX community.</p>';
 if ($error) echo '<div class="notice error">' . h($error) . '</div>';

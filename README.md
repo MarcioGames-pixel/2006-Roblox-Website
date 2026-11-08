@@ -28,7 +28,7 @@ A December 2006-style ROBLOX community website revival. The original classic lay
    - `ROBLOX_DB_NAME` (default: `roblox2006`)
    - `ROBLOX_DB_USER` (default: `root`)
    - `ROBLOX_DB_PASSWORD` (default: empty)
-4. Ensure Apache sends `.aspx` requests to PHP using the included `.htaccess` files.
+4. Rename each file named `htaccess` to `.htaccess` (including the root, Forum, and Admin folders) so Apache executes the `.aspx` PHP pages.
 5. Open the site and register a new account.
 
 For an existing installation using the original `users` table, back up the database and run `database-upgrade.sql` once instead of importing the fresh schema. Existing plaintext-password accounts are not accepted by the new login; reset those accounts or create new ones.

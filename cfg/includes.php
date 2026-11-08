@@ -1,9 +1,18 @@
 <?php
-  session_start();
-  include "maintenance.php";
-  include "database.php";
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    ini_set('session.use_strict_mode', '1');
+    ini_set('session.use_only_cookies', '1');
+    $secureCookie = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path' => '/',
+        'secure' => $secureCookie,
+        'httponly' => true,
+        'samesite' => 'Lax'
+    ]);
+    session_start();
+}
+
+require_once __DIR__ . '/maintenance.php';
+require_once __DIR__ . '/database.php';
 ?>
-
-
-<!-- By Ficello.zip#9910 if you want to see the source code: https://github.com/Ficelloo/2006-Roblox-Website --> 
-<!-- would be cool if ur not removing this credit lol -->

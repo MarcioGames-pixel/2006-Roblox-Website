@@ -22,7 +22,7 @@ $error = '';
 if ($viewer && (int)$viewer['id'] === $userId && $_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_check();
     $description = trim($_POST['description'] ?? '');
-    if (mb_strlen($description) > 500) {
+    if (strlen($description) > 500) {
         $error = 'Your description must be 500 characters or fewer.';
     } else {
         $save = $db->prepare('UPDATE users SET description = :description WHERE id = :id');

@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($email !== '' && (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 190)) {
         $error = 'Enter a valid email address or leave the field blank.';
     } else {
-        $check = $db->prepare('SELECT id FROM users WHERE name = :name OR (:email <> "" AND email = :email) LIMIT 1');
+        $check = $db->prepare('SELECT id FROM users WHERE name = :name OR email = :email LIMIT 1');
         $check->execute(['name' => $username, 'email' => $email]);
         if ($check->fetch()) {
             $error = 'That username or email address is already registered.';

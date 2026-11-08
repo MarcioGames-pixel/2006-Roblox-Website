@@ -58,8 +58,9 @@ The admin flag is reserved for upcoming administration tools. Never publish your
 - [x] Forum topics and replies
 - [x] Local Badges, News, and Help pages
 - [ ] Badge awarding and profile badge display
-- [ ] Admin dashboard and moderation tools
+- [x] Basic admin dashboard with account moderation
 - [ ] Password reset email flow
-- [ ] Complete Browse/catalog and private messages
+- [x] Searchable player directory
+- [ ] Complete asset catalog and private messages
 - [ ] Replace remaining legacy external links and placeholder game actions
 - [ ] Automated tests and broader compatibility cleanup

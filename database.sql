@@ -1,65 +1,43 @@
--- phpMyAdmin SQL Dump
--- version 4.9.5
--- https://www.phpmyadmin.net/
---
--- PHP : 7.3.32
+CREATE DATABASE IF NOT EXISTS roblox2006 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE roblox2006;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+CREATE TABLE IF NOT EXISTS users (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  passwd VARCHAR(255) NOT NULL,
+  email VARCHAR(190) DEFAULT NULL,
+  description VARCHAR(500) NOT NULL DEFAULT '',
+  admin TINYINT(1) NOT NULL DEFAULT 0,
+  banned TINYINT(1) NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY users_name_unique (name),
+  UNIQUE KEY users_email_unique (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS forum_topics (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id INT UNSIGNED NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  body TEXT NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY forum_topics_created (created_at),
+  CONSTRAINT forum_topics_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE TABLE IF NOT EXISTS forum_replies (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  topic_id INT UNSIGNED NOT NULL,
+  user_id INT UNSIGNED NOT NULL,
+  body TEXT NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY forum_replies_topic (topic_id, created_at),
+  CONSTRAINT forum_replies_topic_fk FOREIGN KEY (topic_id) REFERENCES forum_topics(id) ON DELETE CASCADE,
+  CONSTRAINT forum_replies_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
---
-
--- --------------------------------------------------------
-
---
-
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `passwd` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `admin` tinyint(1) NOT NULL DEFAULT 0,
-  `banned` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
-
---
-
-INSERT INTO `users` (`id`, `name`, `passwd`, `admin`, `banned`) VALUES
-(1, 'Administrator', 'adminPasswd01', 1, 0);
-
---
-
---
-
---
-
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
-
---
-
---
-
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- Create the first administrator only after registration:
+-- UPDATE users SET admin = 1 WHERE name = 'YOUR_USERNAME';
+-- Never use a shared default administrator password.

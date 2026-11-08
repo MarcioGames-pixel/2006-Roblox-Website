@@ -51,7 +51,7 @@ body {
             <span class="Separator">&nbsp;|&nbsp;</span>
             <span><a id="_ctl0_hlGames" class="MenuItem" href="MP/Default.aspx">Games</a></span>
             <span class="Separator">&nbsp;|&nbsp;</span>
-            <span><a id="_ctl0_hlBrowse" class="MenuItem" href="MP/Default.aspx">Browse</a></span>
+            <span><a id="_ctl0_hlBrowse" class="MenuItem" href="Browse.aspx">Browse</a></span>
             <span id="_ctl0_BadgesItem" class="Separator">&nbsp;|&nbsp;<a id="_ctl0_hlBadges" class="MenuItem" href="Badges.aspx">Badges</a></span>
             <span class="Separator">&nbsp;|&nbsp;</span>
             <span><a id="_ctl0_hlForum" class="MenuItem" href="Forum/Default.aspx">Forum</a></span>

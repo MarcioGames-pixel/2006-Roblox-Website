@@ -47,18 +47,18 @@ body {
             <?php } ?>
           </div>
           <div id="Navigation">
-            <span><a id="_ctl0_hlMyRoblox" class="MenuItem" href="https://web.archive.org/web/20061230105806/http://www.roblox.com/User.aspx">My ROBLOX</a></span>
+            <span><a id="_ctl0_hlMyRoblox" class="MenuItem" href="User.aspx">My ROBLOX</a></span>
             <span class="Separator">&nbsp;|&nbsp;</span>
             <span><a id="_ctl0_hlGames" class="MenuItem" href="MP/Default.aspx">Games</a></span>
             <span class="Separator">&nbsp;|&nbsp;</span>
-            <span><a id="_ctl0_hlBrowse" class="MenuItem" href="https://web.archive.org/web/20061230105806/http://www.roblox.com/Browse.aspx">Browse</a></span>
-            <span id="_ctl0_BadgesItem" class="Separator">&nbsp;|&nbsp;<a id="_ctl0_hlBadges" class="MenuItem" href="https://web.archive.org/web/20061230105806/http://www.roblox.com/Badges.aspx">Badges</a></span>
+            <span><a id="_ctl0_hlBrowse" class="MenuItem" href="MP/Default.aspx">Browse</a></span>
+            <span id="_ctl0_BadgesItem" class="Separator">&nbsp;|&nbsp;<a id="_ctl0_hlBadges" class="MenuItem" href="Badges.aspx">Badges</a></span>
             <span class="Separator">&nbsp;|&nbsp;</span>
-            <span><a id="_ctl0_hlForum" class="MenuItem" href="https://web.archive.org/web/20061230105806/http://www.roblox.com/Forum/Default.aspx">Forum</a></span>
+            <span><a id="_ctl0_hlForum" class="MenuItem" href="Forum/Default.aspx">Forum</a></span>
             <span class="Separator">&nbsp;|&nbsp;</span>
-            <span><a id="_ctl0_hlNews" class="MenuItem" href="https://web.archive.org/web/20061230105806/http://blog.roblox.com/" target="_blank">News</a></span>
+            <span><a id="_ctl0_hlNews" class="MenuItem" href="News.aspx" target="_blank">News</a></span>
             <span class="Separator">&nbsp;|&nbsp;</span>
-            <span><a id="_ctl0_hlHelp" class="MenuItem" href="https://web.archive.org/web/20061230105806/http://wiki.roblox.com/" target="_blank">Help</a></span>
+            <span><a id="_ctl0_hlHelp" class="MenuItem" href="Help.aspx" target="_blank">Help</a></span>
             <span></span>
           </div>
         </div>
@@ -78,7 +78,7 @@ body {
     <td>
             <div class="AspNet-Login">
               <div class="AspNet-Login-UserPanel">
-                <label for="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_UserName" id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_UserNameLabel" class="Label">Welcome back, placeholder</label>
+                <label for="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_UserName" id="_ctl0_cphRoblox_rbxLoginView_lvLoginView_lSignIn_UserNameLabel" class="Label">Welcome back, <?php echo htmlspecialchars($_SESSION["name"] ?? "", ENT_QUOTES, "UTF-8"); ?></label>
             </div>
           </td>
   </tr>
